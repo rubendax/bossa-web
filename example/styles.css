@@ -201,19 +201,6 @@ section h2 {
     text-align: center;
 }
 
-/* Device info */
-.device-info {
-    display: none;
-    padding: 10px 15px;
-    background-color: #e7f5e7;
-    border: 1px solid var(--success-color);
-    border-radius: 6px;
-    color: #155724;
-    font-size: 0.9em;
-    margin-top: 15px;
-    width: 100%;
-}
-
 /* Progress */
 .progress-section {
     background-color: #f8f9fa;
@@ -297,33 +284,6 @@ progress::-moz-progress-bar {
     color: #ff9800;
 }
 
-/* Footer */
-footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9em;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-.github-link {
-    margin-top: 30px;
-    text-align: center;
-}
 
 /* Responsive */
 @media (max-width: 600px) {
