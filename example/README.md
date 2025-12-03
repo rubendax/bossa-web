@@ -49,8 +49,15 @@ python -m http.server 8000 --directory example
 
 That's it! Your device should now be running the new firmware.
 
+## Troubleshooting
 
-## Browser Requirements
+### "Device not supported" Error
+
+- Make sure you have an ATSAMD21-based device
+- Try manually entering bootloader mode (double-tap reset)
+- Check that you're selecting the correct serial port
+
+### Browser Shows "Not Supported" Error
 
 | Browser | Minimum Version | Status |
 |---------|-----------------|--------|
@@ -62,19 +69,6 @@ That's it! Your device should now be running the new firmware.
 | Firefox | - | ❌ Not supported |
 | Safari | - | ❌ Not supported |
 | Internet Explorer | - | ❌ Not supported |
-
-## Troubleshooting
-
-### "Device not supported" Error
-
-- Make sure you have an ATSAMD21-based device
-- Try manually entering bootloader mode (double-tap reset)
-- Check that you're selecting the correct serial port
-
-### Browser Shows "Not Supported" Error
-
-- Use Chrome, Edge, or Opera
-- Make sure you're using a recent version (Chrome 89+, Edge 89+, Opera 75+)
 
 ### Auto-Reset Fails
 
