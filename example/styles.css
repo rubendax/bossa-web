@@ -318,7 +318,8 @@ footer a:hover {
 }
 
 .github-link {
-    margin-top: 15px;
+    margin-top: 30px;
+    text-align: center;
 }
 
 /* Responsive */

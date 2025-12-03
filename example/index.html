@@ -9,12 +9,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔌 BOSSA Web Firmware Flasher</h1>
+            <h1>BOSSA Web Firmware Flasher</h1>
             <p class="subtitle">One-click firmware flashing for ATSAMD21G-based devices</p>
         </header>
 
         <section class="instructions">
-            <h2>📋 How to Use</h2>
+            <h2>How to Use</h2>
             <ol>
                 <li><strong>Select your firmware file</strong> (.bin format from Arduino or PlatformIO)</li>
                 <li><strong>Click "Flash Firmware"</strong> - The tool will:
@@ -44,7 +44,7 @@
 
             <div class="control-row">
                 <button id="flashBtn" class="btn btn-primary btn-large" disabled>
-                    ⚡ Flash Firmware
+                    Flash Firmware
                 </button>
             </div>
 
@@ -52,7 +52,7 @@
         </section>
 
         <section class="progress-section">
-            <h2>📊 Progress</h2>
+            <h2>Progress</h2>
             <div class="progress-container">
                 <progress id="progressBar" value="0" max="100"></progress>
                 <span id="progressText">0%</span>
@@ -60,19 +60,21 @@
         </section>
 
         <section class="log-section">
-            <h2>📝 Status Log</h2>
+            <h2>Status Log</h2>
             <div id="statusLog" class="status-log"></div>
         </section>
 
-        <footer>
+        <footer style="text-align: left;">
             <p>
-                <strong>Supported devices:</strong> ATSAMD21-based boards (Adafruit Feather M0, Arduino Zero, MKR series)
+                <h3>Supported devices:</h3> 
+                ATSAMD21-based boards (<strong>Adafruit Feather M0</strong>, Arduino Zero, MKR series)
             </p>
             <p>
-                <strong>Browser support:</strong> Chrome 89+, Edge 89+, Opera 75+
+                <h3> Browser support: </h3>
+                Chromium-based browsers (<strong>Brave 1.22+</strong>, Chrome 89+, Edge 89+, Opera 76+, Vivaldi 3.7+)
             </p>
             <p class="github-link">
-                <a href="https://github.com/ma-ku/bossa-web" target="_blank">View on GitHub</a>
+                <a href="https://github.com/rubendax/bossa-web/tree/main/example" target="_blank">View on GitHub</a>
             </p>
         </footer>
     </div>
