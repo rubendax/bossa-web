@@ -96,13 +96,8 @@ section h2 {
 }
 
 .instructions .note {
-    margin: 15px 0 0 0;
-    padding: 10px 15px;
-    background-color: #fff3cd;
-    border: 1px solid var(--warning-color);
-    border-radius: 6px;
-    color: #856404;
-    font-size: 0.9em;
+    margin: 0;
+    font-size: 0.8em;
 }
 
 /* Controls */
@@ -110,6 +105,9 @@ section h2 {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
 }
 
 .control-row {
@@ -163,15 +161,17 @@ section h2 {
 .file-label {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #6c757d;
+    background-color: var(--primary-color);
     color: white;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    text-align: center;
+    font-weight: bold;
 }
 
 .file-label:hover {
-    background-color: #5a6268;
+    background-color: #0056b3;
 }
 
 .file-label input[type="file"] {
@@ -182,21 +182,23 @@ section h2 {
     opacity: 0.5;
 }
 
-.file-label-icon {
+.btn-icon {
     margin-right: 8px;
 }
 
 /* File info */
 .file-info {
     display: none;
-    padding: 10px 15px;
+    padding: 2px 5px;
     background-color: #e3f2fd;
-    border: 1px solid #2196f3;
     border-radius: 6px;
     color: #1565c0;
-    font-size: 0.9em;
-    margin-top: 10px;
-    width: 100%;
+    font-size: 0.7em;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    text-align: center;
 }
 
 /* Device info */

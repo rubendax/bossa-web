@@ -28,7 +28,6 @@ let fileInput: HTMLInputElement;
 let progressBar: HTMLProgressElement;
 let progressText: HTMLSpanElement;
 let statusLog: HTMLDivElement;
-let deviceInfo: HTMLDivElement;
 let fileInfo: HTMLDivElement;
 
 // State
@@ -86,14 +85,6 @@ function updateProgress(current: number, total: number): void {
 function resetProgress(): void {
     progressBar.value = 0;
     progressText.textContent = '0%';
-}
-
-/**
- * Update device info display
- */
-function updateDeviceInfo(info: string): void {
-    deviceInfo.textContent = info;
-    deviceInfo.style.display = info ? 'block' : 'none';
 }
 
 /**
@@ -225,7 +216,6 @@ async function flashFirmware(): Promise<void> {
     flashBtn.disabled = true;
     fileInput.disabled = true;
     resetProgress();
-    updateDeviceInfo('');
     
     let normalPort: SerialPort | null = null;
     let bootloaderPort: SerialPort | null = null;
@@ -329,7 +319,6 @@ async function flashFirmware(): Promise<void> {
         
         const sizeKB = Math.round(flash.totalSize / 1024);
         const info = `Device: ${flash.numPages} pages × ${flash.pageSize} bytes = ${sizeKB}KB flash`;
-        updateDeviceInfo(info);
         logSuccess(info);
         
         // Determine flash offset based on device family
@@ -440,7 +429,6 @@ function init(): void {
     progressBar = document.getElementById('progressBar') as HTMLProgressElement;
     progressText = document.getElementById('progressText') as HTMLSpanElement;
     statusLog = document.getElementById('statusLog') as HTMLDivElement;
-    deviceInfo = document.getElementById('deviceInfo') as HTMLDivElement;
     fileInfo = document.getElementById('fileInfo') as HTMLDivElement;
     
     // Set up event listeners

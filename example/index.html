@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
     <title>BOSSA Web Firmware Flasher</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+          href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -27,58 +31,55 @@
                 </li>
             </ol>
             <p class="note">
-                <strong>Note:</strong> If auto-reset doesn't work, manually double-tap the reset button on your device 
-                before selecting the port.
+                <strong>Supported devices:</strong><br>
+                ATSAMD21-based boards (Adafruit Feather M0, Arduino Zero, MKR series)
+                <br><br>
+                <strong> Supported browsers: </strong><br>
+                Chromium-based browsers (Brave 1.22+, Chrome 89+, Edge 89+, Opera 76+, Vivaldi 3.7+)
             </p>
         </section>
 
         <section class="controls">
             <div class="control-row">
-                <label for="fileInput" class="file-label">
-                    <span class="file-label-icon">📁</span>
+                <label for="fileInput"
+                       class="file-label">
+                    <span class="btn-icon">📁</span>
                     <span class="file-label-text">Select Firmware (.bin)</span>
-                    <input type="file" id="fileInput" accept=".bin">
+                    <div id="fileInfo"
+                         class="file-info"></div>
+                    <input type="file"
+                           id="fileInput"
+                           accept=".bin">
                 </label>
-                <div id="fileInfo" class="file-info"></div>
             </div>
 
             <div class="control-row">
-                <button id="flashBtn" class="btn btn-primary btn-large" disabled>
-                    ⚡ Flash Firmware
+                <button id="flashBtn"
+                        class="btn btn-primary btn-large"
+                        disabled>
+                    <span class="btn-icon">⚡</span> <span>Flash Firmware</span>
                 </button>
             </div>
-
-            <div id="deviceInfo" class="device-info"></div>
         </section>
 
         <section class="progress-section">
             <h2>Progress</h2>
             <div class="progress-container">
-                <progress id="progressBar" value="0" max="100"></progress>
+                <progress id="progressBar"
+                          value="0"
+                          max="100"></progress>
                 <span id="progressText">0%</span>
             </div>
         </section>
 
         <section class="log-section">
             <h2>Status Log</h2>
-            <div id="statusLog" class="status-log"></div>
+            <div id="statusLog"
+                 class="status-log"></div>
         </section>
-
-        <footer style="text-align: left;">
-            <p>
-                <h3>Supported devices:</h3> 
-                ATSAMD21-based boards (<strong>Adafruit Feather M0</strong>, Arduino Zero, MKR series)
-            </p>
-            <p>
-                <h3> Browser support: </h3>
-                Chromium-based browsers (<strong>Brave 1.22+</strong>, Chrome 89+, Edge 89+, Opera 76+, Vivaldi 3.7+)
-            </p>
-            <p class="github-link">
-                <a href="https://github.com/rubendax/bossa-web/tree/main/example" target="_blank">View on GitHub</a>
-            </p>
-        </footer>
     </div>
 
     <script src="bundle.js"></script>
 </body>
+
 </html>
