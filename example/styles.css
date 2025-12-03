@@ -73,7 +73,7 @@ section h2 {
 }
 
 .instructions ol {
-    margin: 0;
+    margin: 0 0 15px 0;
     padding-left: 20px;
 }
 
@@ -83,6 +83,26 @@ section h2 {
 
 .instructions li:last-child {
     margin-bottom: 0;
+}
+
+.instructions ul {
+    margin-top: 8px;
+    padding-left: 20px;
+    color: var(--text-muted);
+}
+
+.instructions ul li {
+    margin-bottom: 4px;
+}
+
+.instructions .note {
+    margin: 15px 0 0 0;
+    padding: 10px 15px;
+    background-color: #fff3cd;
+    border: 1px solid var(--warning-color);
+    border-radius: 6px;
+    color: #856404;
+    font-size: 0.9em;
 }
 
 /* Controls */
@@ -132,6 +152,12 @@ section h2 {
     background-color: #1e7e34;
 }
 
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.2em;
+    width: 100%;
+}
+
 /* File input */
 .file-label {
     display: inline-block;
@@ -155,6 +181,23 @@ section h2 {
     opacity: 0.5;
 }
 
+.file-label-icon {
+    margin-right: 8px;
+}
+
+/* File info */
+.file-info {
+    display: none;
+    padding: 10px 15px;
+    background-color: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-radius: 6px;
+    color: #1565c0;
+    font-size: 0.9em;
+    margin-top: 10px;
+    width: 100%;
+}
+
 /* Device info */
 .device-info {
     display: none;
@@ -164,6 +207,8 @@ section h2 {
     border-radius: 6px;
     color: #155724;
     font-size: 0.9em;
+    margin-top: 15px;
+    width: 100%;
 }
 
 /* Progress */

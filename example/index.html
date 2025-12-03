@@ -10,36 +10,45 @@
     <div class="container">
         <header>
             <h1>🔌 BOSSA Web Firmware Flasher</h1>
-            <p class="subtitle">Flash firmware to ATSAMD21G-based devices via Web Serial API</p>
+            <p class="subtitle">One-click firmware flashing for ATSAMD21G-based devices</p>
         </header>
 
         <section class="instructions">
-            <h2>📋 Instructions</h2>
+            <h2>📋 How to Use</h2>
             <ol>
-                <li><strong>Enter Bootloader Mode:</strong> Double-tap the reset button on your device. 
-                    The LED should pulse/fade indicating bootloader mode.</li>
-                <li><strong>Connect:</strong> Click the "Connect Device" button and select the bootloader serial port.</li>
-                <li><strong>Select Firmware:</strong> Choose your .bin firmware file.</li>
-                <li><strong>Flash:</strong> Click "Flash Firmware" and wait for completion.</li>
+                <li><strong>Select your firmware file</strong> (.bin format from Arduino or PlatformIO)</li>
+                <li><strong>Click "Flash Firmware"</strong> - The tool will:
+                    <ul>
+                        <li>Ask you to select your device's serial port</li>
+                        <li>Automatically reset your device into bootloader mode</li>
+                        <li>Flash the firmware</li>
+                        <li>Reset the device to run the new code</li>
+                    </ul>
+                </li>
             </ol>
+            <p class="note">
+                <strong>Note:</strong> If auto-reset doesn't work, manually double-tap the reset button on your device 
+                before selecting the port.
+            </p>
         </section>
 
         <section class="controls">
             <div class="control-row">
-                <button id="connectBtn" class="btn btn-primary">Connect Device</button>
-                <div id="deviceInfo" class="device-info"></div>
-            </div>
-
-            <div class="control-row">
                 <label for="fileInput" class="file-label">
+                    <span class="file-label-icon">📁</span>
                     <span class="file-label-text">Select Firmware (.bin)</span>
-                    <input type="file" id="fileInput" accept=".bin" disabled>
+                    <input type="file" id="fileInput" accept=".bin">
                 </label>
+                <div id="fileInfo" class="file-info"></div>
             </div>
 
             <div class="control-row">
-                <button id="flashBtn" class="btn btn-success" disabled>Flash Firmware</button>
+                <button id="flashBtn" class="btn btn-primary btn-large" disabled>
+                    ⚡ Flash Firmware
+                </button>
             </div>
+
+            <div id="deviceInfo" class="device-info"></div>
         </section>
 
         <section class="progress-section">
@@ -57,7 +66,7 @@
 
         <footer>
             <p>
-                <strong>Supported devices:</strong> ATSAMD21-based boards (Adafruit Feather M0, Arduino Zero, etc.)
+                <strong>Supported devices:</strong> ATSAMD21-based boards (Adafruit Feather M0, Arduino Zero, MKR series)
             </p>
             <p>
                 <strong>Browser support:</strong> Chrome 89+, Edge 89+, Opera 75+

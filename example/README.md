@@ -1,6 +1,13 @@
-# BOSSA Web Firmware Flasher Example
+# BOSSA Web Firmware Flasher
 
-A simple web-based firmware flasher for ATSAMD21G-based devices using the Web Serial API.
+A one-click web-based firmware flasher for ATSAMD21G-based devices using the Web Serial API.
+
+## Features
+
+- **One-click flashing** - Just select your firmware and click Flash
+- **Auto-reset to bootloader** - Uses 1200 baud touch technique (like Arduino IDE)
+- **Progress tracking** - Real-time progress bar and status log
+- **No drivers needed** - Works directly in your browser
 
 ## Supported Devices
 
@@ -27,8 +34,10 @@ A simple web-based firmware flasher for ATSAMD21G-based devices using the Web Se
 # Install dependencies
 npm install
 
-# Build the library and example
+# Build the library
 npm run build
+
+# Build the example
 npm run build:example
 ```
 
@@ -48,26 +57,34 @@ python -m http.server 8000 --directory example
 
 ### 3. Flash Your Device
 
-1. **Enter Bootloader Mode**
-   - Double-tap the reset button on your device
-   - The LED should pulse/fade indicating bootloader mode
-   - A new serial port will appear
+1. **Select Firmware** - Click "Select Firmware (.bin)" and choose your compiled .bin file
+2. **Click "Flash Firmware"** - The tool will automatically:
+   - Ask you to select your device's serial port
+   - Reset the device into bootloader mode
+   - Connect to the bootloader
+   - Erase and write the firmware
+   - Reset the device to run the new code
 
-2. **Connect**
-   - Click "Connect Device"
-   - Select the bootloader serial port from the browser dialog
-   - On macOS: looks like `cu.usbmodem*`
-   - On Windows: `COM*`
-   - On Linux: `/dev/ttyACM*`
+That's it! Your device should now be running the new firmware.
 
-3. **Select Firmware**
-   - Click "Select Firmware (.bin)"
-   - Choose your compiled .bin file
+## How Auto-Reset Works
 
-4. **Flash**
-   - Click "Flash Firmware"
-   - Wait for the process to complete
-   - The device will automatically reset and run the new firmware
+The flasher uses the "1200 baud touch" technique:
+
+1. Opens your device's serial port at 1200 baud
+2. Toggles the DTR signal to trigger a reset
+3. Waits for the bootloader to enumerate
+4. Connects to the bootloader port for flashing
+
+This is the same technique used by the Arduino IDE.
+
+### If Auto-Reset Doesn't Work
+
+Some devices or USB adapters may not support the auto-reset. In this case:
+
+1. **Manually enter bootloader mode** by double-tapping the reset button
+2. The LED should pulse/fade indicating bootloader mode
+3. Then click "Flash Firmware" and select the bootloader port
 
 ## Test Firmware
 
@@ -80,14 +97,9 @@ A test firmware file is included in the repository root:
 
 ### "Device not supported" Error
 
-- Make sure the device is in **bootloader mode** (double-tap reset)
-- The device should show a different serial port than normal operation
-- Try unplugging and reconnecting the device
-
-### "No port selected" Message
-
-- You cancelled the port selection dialog
-- Click "Connect Device" again and select a port
+- Make sure you have an ATSAMD21-based device
+- Try manually entering bootloader mode (double-tap reset)
+- Check that you're selecting the correct serial port
 
 ### Browser Shows "Not Supported" Error
 
@@ -101,12 +113,22 @@ A test firmware file is included in the repository root:
 - Try a different USB cable or port
 - Re-enter bootloader mode and try again
 
+### Auto-Reset Not Working
+
+- Not all USB-to-serial adapters support DTR toggling
+- Try manually double-tapping the reset button before flashing
+- Some boards may need a longer delay - try waiting a few seconds after reset
+
 ### Device Not Showing in Port List
 
-- Check that the device is in bootloader mode
+- Check that the device is properly connected
 - Try a different USB port
-- On Linux, you may need to add udev rules for your device
-- On macOS, the port should appear automatically
+- On Linux, you may need to add udev rules:
+  ```bash
+  # Create /etc/udev/rules.d/99-arduino.rules
+  SUBSYSTEM=="usb", ATTR{idVendor}=="239a", MODE="0666"
+  SUBSYSTEM=="usb", ATTR{idVendor}=="2341", MODE="0666"
+  ```
 
 ## Development
 
