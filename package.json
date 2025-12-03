@@ -38,13 +38,16 @@
     "prebuild": "rimraf ./dist",
     "patch": "ts-add-js-extension --dir=dist",
     "build": "tsc",
+    "build:example": "esbuild src/example.ts --bundle --outfile=example/bundle.js --format=iife --global-name=BossaFlasher --target=es2018 --define:global=window",
     "watch": "tsc --watch --preserveWatchOutput -p tsconfig.json",
     "test": "mocha -r ts-node/register src/*.spec.ts",
+    "serve": "npx serve example",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@types/events": "^3.0.0",
-    "@types/w3c-web-serial": "^1.0.2"
+    "@types/w3c-web-serial": "^1.0.2",
+    "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
@@ -56,10 +59,12 @@
     "@types/xml2js": "^0.4.9",
     "chai": "^4.3.4",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.19.8",
     "gh-pages": "^3.2.3",
     "mocha": "^9.1.0",
     "rimraf": "^3.0.2",
     "semver": "^7.3.5",
+    "serve": "^14.2.1",
     "sinon": "^11.1.2",
     "sinon-chai": "^3.7.0",
     "source-map-support": "^0.5.20",

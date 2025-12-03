@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOSSA Web Firmware Flasher</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔌 BOSSA Web Firmware Flasher</h1>
+            <p class="subtitle">One-click firmware flashing for ATSAMD21G-based devices</p>
+        </header>
+
+        <section class="instructions">
+            <h2>📋 How to Use</h2>
+            <ol>
+                <li><strong>Select your firmware file</strong> (.bin format from Arduino or PlatformIO)</li>
+                <li><strong>Click "Flash Firmware"</strong> - The tool will:
+                    <ul>
+                        <li>Ask you to select your device's serial port</li>
+                        <li>Automatically reset your device into bootloader mode</li>
+                        <li>Flash the firmware</li>
+                        <li>Reset the device to run the new code</li>
+                    </ul>
+                </li>
+            </ol>
+            <p class="note">
+                <strong>Note:</strong> If auto-reset doesn't work, manually double-tap the reset button on your device 
+                before selecting the port.
+            </p>
+        </section>
+
+        <section class="controls">
+            <div class="control-row">
+                <label for="fileInput" class="file-label">
+                    <span class="file-label-icon">📁</span>
+                    <span class="file-label-text">Select Firmware (.bin)</span>
+                    <input type="file" id="fileInput" accept=".bin">
+                </label>
+                <div id="fileInfo" class="file-info"></div>
+            </div>
+
+            <div class="control-row">
+                <button id="flashBtn" class="btn btn-primary btn-large" disabled>
+                    ⚡ Flash Firmware
+                </button>
+            </div>
+
+            <div id="deviceInfo" class="device-info"></div>
+        </section>
+
+        <section class="progress-section">
+            <h2>📊 Progress</h2>
+            <div class="progress-container">
+                <progress id="progressBar" value="0" max="100"></progress>
+                <span id="progressText">0%</span>
+            </div>
+        </section>
+
+        <section class="log-section">
+            <h2>📝 Status Log</h2>
+            <div id="statusLog" class="status-log"></div>
+        </section>
+
+        <footer>
+            <p>
+                <strong>Supported devices:</strong> ATSAMD21-based boards (Adafruit Feather M0, Arduino Zero, MKR series)
+            </p>
+            <p>
+                <strong>Browser support:</strong> Chrome 89+, Edge 89+, Opera 75+
+            </p>
+            <p class="github-link">
+                <a href="https://github.com/ma-ku/bossa-web" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="bundle.js"></script>
+</body>
+</html>
