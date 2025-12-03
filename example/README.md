@@ -5,8 +5,9 @@
 ## Features
 
 - **One-click flashing** - Just select your firmware and click Flash
-- **Auto-reset to bootloader** - Uses 1200 baud touch technique (like Arduino IDE)
-- **Progress tracking** - Real-time progress bar and live status log
+- **Progress tracking** - Real-time status logs and progress bar built into the UI.
+- **Auto-reset** - Uses 1200 baud-touch technique to automatically enter bootloader mode (like the Arduino IDE).
+- **Automatic Port Detection** - Attempts to automatically detect known USB vendor IDs while in bootloader mode to minimize necessary user interaction.
 
 ## Quick Start
 
@@ -86,5 +87,5 @@ That's it! Your device should now be running the new firmware.
   SUBSYSTEM=="usb", ATTR{idVendor}=="2341", MODE="0666"
   ```
 
-### Test Rig
-This was tested and confirmed to successfully flash firmware to an **Adafruit Feather M0** via Chromium v142 on Mac OS 13.7. 
+---
+#### Note: This was tested and confirmed to successfully flash firmware to an **Adafruit Feather M0** via **Chromium v142** on **Mac OS 13.7**. Wider compatibility is expected but has not yet been tested.
