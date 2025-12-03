@@ -1,7 +1,7 @@
 /**
  * BOSSA Web Firmware Flasher Example
  *
- * One-click firmware flashing for ATSAMD21G-based devices using Web Serial API.
+ * Easy firmware flashing for ATSAMD21G-based devices using Web Serial API.
  * The flow: Select firmware → Click Flash → Auto-reset to bootloader → Flash → Done
  */
 
@@ -14,12 +14,12 @@ import { sleep } from './util';
 // This is where the application code starts
 const BOOTLOADER_SIZE = 0x2000; // 8KB
 
-// USB Vendor IDs for common Arduino/Adafruit devices
+// USB Vendor IDs for common Arduino/Adafruit devices. These VIDs are specific for bootloader mode.
 const USB_FILTERS = [
     { usbVendorId: 0x239A }, // Adafruit
     { usbVendorId: 0x2341 }, // Arduino
     { usbVendorId: 0x1B4F }, // SparkFun
-    { usbVendorId: 0x03EB }, // Atmel
+    { usbVendorId: 0x03EB }, // Atmel/Microchip
 ];
 
 // UI Elements
@@ -41,7 +41,7 @@ let firmwareFileName: string = '';
 function checkBrowserSupport(): boolean {
     if (!('serial' in navigator)) {
         logError('Web Serial API is not supported in this browser.');
-        logError('Please use Chrome 89+, Edge 89+, or Opera 75+.');
+        logError('Please use a Chromium-based browser (Chrome 89+, Edge 89+, Opera 75+, Brave1.22+, etc.');
         return false;
     }
     return true;
@@ -146,7 +146,7 @@ async function handleFileSelect(event: Event): Promise<void> {
 
 /**
  * Perform 1200 baud touch to reset device into bootloader mode
- * This is the technique used by Arduino IDE to trigger bootloader
+ * This is the technique used by the Arduino IDE to enter the bootloader
  */
 async function resetToBootloader(port: SerialPort): Promise<void> {
     log('Resetting device to bootloader mode...');

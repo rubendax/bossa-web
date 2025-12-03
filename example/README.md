@@ -1,6 +1,6 @@
 # BOSSA Web Firmware Flasher
 
-### A one-click web-based firmware flasher for ATSAMD21G-based devices using the Web Serial API. 
+### A simple web-based firmware flasher for ATSAMD21G-based devices using the Web Serial API. 
 
 ## Features
 
