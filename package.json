@@ -2,10 +2,8 @@
   "name": "bossa-web",
   "version": "0.9.7",
   "description": "Port of BOSSA to TypeScript with support for WebSerial API",
-  
   "main": "./dist/bossa-web.js",
-  "types": "./dist/bossa-web.d.ts",  
-  
+  "types": "./dist/bossa-web.d.ts",
   "keywords": [
     "bossa",
     "arduino",
@@ -13,15 +11,12 @@
     "web-serial",
     "browser"
   ],
-
   "author": {
     "name": "Mathias Kühn",
     "email": "mathias.kuehn@me.com"
   },
-  
   "license": "BSD-3",
   "readme": "README.md",
-
   "homepage": "https://github.com/ma-ku/bossa-web#readme",
   "repository": {
     "type": "git",
@@ -33,25 +28,26 @@
   "engines": {
     "node": ">=12"
   },
-
   "files": [
     "dist/",
     "LICENSE",
     "README.md",
     "package.json"
   ],
-
   "scripts": {
     "prebuild": "rimraf ./dist",
+    "patch": "ts-add-js-extension --dir=dist",
     "build": "tsc",
+    "build:example": "esbuild src/example.ts --bundle --outfile=example/bundle.js --format=iife --global-name=BossaFlasher --target=es2018 --define:global=window",
     "watch": "tsc --watch --preserveWatchOutput -p tsconfig.json",
     "test": "mocha -r ts-node/register src/*.spec.ts",
+    "serve": "npx serve example",
     "prepublishOnly": "npm run build"
   },
-
   "dependencies": {
     "@types/events": "^3.0.0",
-    "@types/w3c-web-serial": "^1.0.2"
+    "@types/w3c-web-serial": "^1.0.2",
+    "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
@@ -63,17 +59,20 @@
     "@types/xml2js": "^0.4.9",
     "chai": "^4.3.4",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.19.8",
     "gh-pages": "^3.2.3",
     "mocha": "^9.1.0",
     "rimraf": "^3.0.2",
     "semver": "^7.3.5",
+    "serve": "^14.2.1",
     "sinon": "^11.1.2",
     "sinon-chai": "^3.7.0",
     "source-map-support": "^0.5.20",
+    "ts-add-js-extension": "^1.6.4",
     "ts-node": "^10.4.0",
+    "tslint": "^6.1.3",
     "typedoc": "^0.15.8",
     "typedoc-md-theme": "^1.0.1",
-    "tslint": "^6.1.3",
     "typescript": "^4.4.4"
   }
 }

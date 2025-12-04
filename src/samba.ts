@@ -128,7 +128,7 @@ export class SamBA {
 
     let num = parseInt(value, 16);
 
-    if (num == NaN) {
+    if (Number.isNaN(num)) {
       throw new SamBAError('Invalid checksum returned');
     }
 
@@ -257,7 +257,7 @@ export class SamBA {
       let value = (result[3] << 24 | result[2] << 16 | result[1] << 8 | result[0] << 0);
 
       if (this.options.debug)
-        this.options.logger.debug('readByte(addr=0x', this.hex(addr),')=0x',this.hex(value,8));
+        this.options.logger.debug('readWord(addr=0x', this.hex(addr),')=0x',this.hex(value,8));
 
       return value;
     }
@@ -511,9 +511,9 @@ export class SamBA {
         await sleep(10);
       }
 
-      if (reply.length > 1 && (reply[reply.length - 1] == 0x0)) {
-        break;
-      }
+      // if (reply.length > 1 && (reply[reply.length - 1] == 0x0)) {
+      //   break;
+      // }
 
       if (responseSize && reply.length == responseSize) {
         break;
