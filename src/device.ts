@@ -575,7 +575,7 @@ export class Device {
         case 0x60060005: // J19A
         case 0x60060007: // G19A
             this._family = Family.FAMILY_SAMD51;
-            flashPtr = null; new D5xNvmFlash(this._samba, "ATSAMD51x19", 1024, 512, 0x20004000, 0x20008000) ;
+            flashPtr = new D5xNvmFlash(this._samba, "ATSAMD51x19", 1024, 512, 0x20004000, 0x20008000) ;
             break;
 
         case 0x60060000: // P20A
